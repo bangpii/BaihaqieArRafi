@@ -27,7 +27,7 @@
 
 I'm **Baihaqie Ar Rafi**, an Informatics Management student at **Politeknik Negeri Medan** who is passionate about building modern, scalable, and user-focused applications.
 
-I enjoy working across the stack — from designing responsive interfaces to developing APIs, managing databases, and deploying applications.
+I enjoy working across the stack — from designing responsive interfaces and developing APIs to managing databases, configuring servers, and deploying applications.
 
 ```javascript
 const baihaqie = {
@@ -37,10 +37,11 @@ const baihaqie = {
 
   interests: [
     "Web Development",
+    "Frontend Development",
     "Backend Development",
     "Mobile Development",
     "Database Engineering",
-    "Cloud & Deployment"
+    "Server & Deployment"
   ],
 
   currentlyLearning: [
@@ -59,45 +60,75 @@ const baihaqie = {
 
 # ⚡ Tech Stack
 
-### Frontend
+## 🌐 Frontend Development
 
 <p>
-<img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,vite,tailwind" />
+  <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,vite,tailwind" />
 </p>
 
 **HTML · CSS · JavaScript · TypeScript · React · Next.js · Vite · Tailwind CSS**
 
-### Backend
+---
+
+## ⚙️ Backend Development
 
 <p>
-<img src="https://skillicons.dev/icons?i=nodejs,express,php,laravel" />
+  <img src="https://skillicons.dev/icons?i=nodejs,express,php,laravel" />
 </p>
 
 **Node.js · Express.js · PHP · Laravel · CodeIgniter · REST API**
 
-### Database
+---
+
+## 🗄️ Database
 
 <p>
-<img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql,oracle" />
+  <img src="https://skillicons.dev/icons?i=mongodb,mysql,postgresql,oracle" />
 </p>
 
 **MongoDB · MySQL · MariaDB · PostgreSQL · Oracle Database**
 
-### Mobile
+---
+
+## 📱 Mobile Development
 
 <p>
-<img src="https://skillicons.dev/icons?i=flutter,dart,androidstudio" />
+  <img src="https://skillicons.dev/icons?i=flutter,dart,androidstudio" />
 </p>
 
-**Flutter · Dart · Android Development**
+**Flutter · Dart · Android Development · Java**
 
-### Tools & Infrastructure
+---
+
+## 🛠️ Tools & Development Environment
 
 <p>
-<img src="https://skillicons.dev/icons?i=git,github,linux,firebase,cloudflare,vscode" />
+  <img src="https://skillicons.dev/icons?i=git,github,linux,vscode" />
 </p>
 
-**Git · GitHub · Linux · Firebase · Cloudflare · VS Code · XAMPP**
+**Git · GitHub · Linux · VS Code · XAMPP**
+
+---
+
+## 🌐 Server & Infrastructure
+
+<p>
+  <img src="https://skillicons.dev/icons?i=nginx,apache,cloudflare,firebase" />
+</p>
+
+**Nginx · Apache · Cloudflare · Firebase · ngrok**
+
+### Server & Deployment
+
+```text
+🐧 Linux
+🌐 Nginx
+🪶 Apache
+🔥 Firebase
+☁️ Cloudflare
+🔗 ngrok
+📦 XAMPP
+```
 
 ---
 
@@ -105,18 +136,21 @@ const baihaqie = {
 
 ```text
 ┌──────────────────────────────────────────────┐
-│                DEVELOPMENT                   │
+│                 DEVELOPMENT                 │
 ├──────────────────────────────────────────────┤
 │                                              │
 │  🌐 Responsive Web Applications              │
 │  ⚛️ React / Next.js Applications             │
+│  🔷 TypeScript Applications                  │
 │  🔌 REST API & Backend Services              │
 │  🗄️ Database-driven Applications             │
 │  📱 Flutter Mobile Applications              │
 │  🔐 Authentication & Authorization           │
 │  ⚡ Real-time Applications                   │
 │  🎨 Modern UI / UX                           │
-│  ☁️ Deployment & Cloud Integration           │
+│  🖥️ Server Configuration                      │
+│  🌐 Nginx / Apache Configuration              │
+│  ☁️ Cloud & Deployment                       │
 │                                              │
 └──────────────────────────────────────────────┘
 ```
@@ -208,17 +242,19 @@ Node.js
 
 ---
 
-# 📈 GitHub Statistics
+# 📊 GitHub Statistics
 
 <p align="center">
   <img
     src="https://github-readme-stats.vercel.app/api?username=bangpii&show_icons=true&theme=tokyonight&hide_border=true&count_private=true"
     height="170"
   />
-  <img
-    src="https://github-readme-stats.vercel.app/api/top-langs/?username=bangpii&layout=compact&theme=tokyonight&hide_border=true"
-    height="170"
-  />
+
+<img
+ src="https://github-readme-stats.vercel.app/api/top-langs/?username=bangpii&layout=compact&theme=tokyonight&hide_border=true"
+ height="170"
+/>
+
 </p>
 
 <p align="center">
@@ -270,6 +306,8 @@ Node.js
  ├── TypeScript
  ├── Next.js
  ├── Backend Architecture
+ ├── Nginx
+ ├── Apache
  ├── Cloud & Deployment
  └── Full-Stack Development
 ```
@@ -292,6 +330,7 @@ I'm continuously improving my understanding of:
 * 🏗️ Backend architecture
 * 🔌 REST API design
 * 🗄️ Database architecture
+* 🌐 Nginx & Apache
 * ☁️ Cloud & deployment
 * 🔐 Authentication & security
 * 📐 System design
@@ -316,16 +355,63 @@ I'm always open to learning from experienced developers, contributing to interes
 
 ---
 
+# 🧰 Development Environment
+
+```text
+Operating System
+├── Linux
+└── Windows
+
+Frontend
+├── React
+├── Next.js
+├── Vite
+├── TypeScript
+└── Tailwind CSS
+
+Backend
+├── Node.js
+├── Express.js
+├── PHP
+├── Laravel
+└── CodeIgniter
+
+Database
+├── MongoDB
+├── MySQL
+├── MariaDB
+├── PostgreSQL
+└── Oracle
+
+Mobile
+├── Flutter
+├── Dart
+└── Android
+
+Server
+├── Nginx
+├── Apache
+├── XAMPP
+├── Cloudflare
+└── ngrok
+
+Version Control
+├── Git
+└── GitHub
+```
+
+---
+
 # 📫 Connect With Me
 
 <p align="center">
 
 <a href="https://github.com/bangpii">
-<img src="https://img.shields.io/badge/GitHub-BangPii-181717?style=for-the-badge&logo=github" />
+  <img src="https://img.shields.io/badge/GitHub-BangPii-181717?style=for-the-badge&logo=github" />
 </a>
 
 <a href="https://www.linkedin.com/in/baihaqie-arrafi-26311b2a8/">
-<img src="https://img.shields.io/badge/LinkedIn-Baihaqie_Ar_Rafi-0A66C2?style=for-the-badge&logo=linkedin" />
+  <img src="https://img.shields.io/badge/LinkedIn-Baihaqie_Ar_Rafi-0A66C2?style=for-the-badge&logo=linkedin" />
 </a>
 
 </p>
