@@ -335,6 +335,14 @@
   color: #9d7bff;
 }
 
+/* static lightweight starfield for mobile (no WebGL, no animation) */
+.mobile-stars {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
 /* floating computer/network background for experience-tech-works sections */
 .network-bg {
   position: absolute;

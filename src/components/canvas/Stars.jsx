@@ -28,21 +28,25 @@ const Stars = ({ count = 5000, ...props }) => {
 };
 
 const StarsCanvas = () => {
-  const [count, setCount] = useState(5000);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
-    setCount(mediaQuery.matches ? 1200 : 5000);
-    const handleChange = (e) => setCount(e.matches ? 1200 : 5000);
+    setIsMobile(mediaQuery.matches);
+    const handleChange = (e) => setIsMobile(e.matches);
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
+
+  if (isMobile) {
+    return <div className='mobile-stars' aria-hidden='true' />;
+  }
 
   return (
     <div className='w-full h-auto absolute inset-0 z-[-1]'>
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
-          <Stars count={count} />
+          <Stars count={5000} />
         </Suspense>
 
         <Preload all />
