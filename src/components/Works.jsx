@@ -7,6 +7,7 @@ import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
+import useIsMobile from "../hooks/useIsMobile";
 
 const ProjectCard = ({
   index,
@@ -16,16 +17,17 @@ const ProjectCard = ({
   image,
   source_code_link,
 }) => {
-  return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
-      >
+  const isMobile = useIsMobile();
+
+  const cardInner = (
+    <Tilt
+      options={{
+        max: 45,
+        scale: 1,
+        speed: 450,
+      }}
+      className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
+    >
        <div className='relative w-full'>
       <img
         src={image}
@@ -64,6 +66,15 @@ const ProjectCard = ({
           ))}
         </div>
       </Tilt>
+  );
+
+  if (isMobile) {
+    return cardInner;
+  }
+
+  return (
+    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+      {cardInner}
     </motion.div>
   );
 };

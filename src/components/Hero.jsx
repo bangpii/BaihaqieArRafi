@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import HeroMobileBackground from "./mobile/HeroMobileBackground";
 
 const Hero = () => {
   return (
@@ -26,6 +27,10 @@ const Hero = () => {
       </div>
 
       <ComputersCanvas />
+
+      <div className='xs:hidden'>
+        <HeroMobileBackground />
+      </div>
 
       <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
         <a href='#about'>

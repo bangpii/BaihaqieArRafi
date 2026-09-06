@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
@@ -71,28 +72,70 @@ const Navbar = () => {
             onClick={() => setToggle(!toggle)}
           />
 
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
-          >
-            <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
+          <AnimatePresence>
+            {toggle && (
+              <motion.div
+                key='backdrop'
+                className='mobile-menu-backdrop'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35 }}
+                onClick={() => setToggle(false)}
+              />
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {toggle && (
+              <motion.aside
+                key='drawer'
+                className='mobile-menu-drawer'
+                initial={{ x: "110%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "110%" }}
+                transition={{ type: "spring", damping: 26, stiffness: 220 }}
+              >
+                <button
+                  type='button'
+                  aria-label='Close menu'
+                  className='absolute top-7 right-7 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white'
+                  onClick={() => setToggle(false)}
                 >
-                  <a href={`#${nav.id}`}>{nav.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                  <img
+                    src={close}
+                    alt='close'
+                    className='w-[18px] h-[18px] object-contain'
+                  />
+                </button>
+
+                <ul>
+                  {navLinks.map((nav, i) => (
+                    <motion.li
+                      key={nav.id}
+                      className={`mobile-menu-link font-poppins ${
+                        active === nav.title ? "active" : ""
+                      }`}
+                      initial={{ x: 60, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 60, opacity: 0 }}
+                      transition={{
+                        delay: 0.15 + i * 0.08,
+                        duration: 0.4,
+                        ease: "easeOut",
+                      }}
+                      onClick={() => {
+                        setToggle(false);
+                        setActive(nav.title);
+                      }}
+                    >
+                      <a href={`#${nav.id}`}>{nav.title}</a>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.aside>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </nav>

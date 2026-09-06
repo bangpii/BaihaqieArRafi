@@ -114,6 +114,315 @@
   -webkit-text-fill-color: transparent;
 }
 
+/* ---------------------------------------------------------------
+   MOBILE-ONLY LIGHTWEIGHT ANIMATIONS
+   These replace heavy WebGL (Three.js) scenes on small screens.
+   They are pure CSS (transform/opacity only) so the GPU handles
+   them cheaply without a WebGL context.
+---------------------------------------------------------------- */
+
+/* Hero: floating gradient orbs + code-style particle field */
+.hero-mobile-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, #915eff 0%, transparent 70%);
+  top: -80px;
+  left: -60px;
+  animation: orbFloat 9s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #00cea8 0%, transparent 70%);
+  bottom: -40px;
+  right: -50px;
+  animation: orbFloat 11s ease-in-out infinite reverse;
+}
+
+.orb-3 {
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, #bf61ff 0%, transparent 70%);
+  top: 40%;
+  left: 60%;
+  animation: orbFloat 13s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(24px, -28px, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-20px, 22px, 0) scale(0.94);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: #f272c8;
+  opacity: 0.25;
+  will-change: transform, opacity;
+  animation: particleRise linear infinite;
+}
+
+@keyframes particleRise {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  85% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate3d(0, -110vh, 0);
+    opacity: 0;
+  }
+}
+
+/* Tech section: floating logo cards */
+.mobile-tech-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.mobile-tech-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.5rem;
+  height: 5.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  padding: 0.9rem;
+  will-change: transform;
+}
+
+.mobile-tech-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(145, 94, 255, 0.25));
+}
+
+.mobile-tech-item:nth-child(odd) {
+  animation: techFloatA 4.5s ease-in-out infinite;
+}
+
+.mobile-tech-item:nth-child(even) {
+  animation: techFloatB 5.5s ease-in-out infinite;
+}
+
+@keyframes techFloatA {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes techFloatB {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* mobile glass nav drawer */
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(5, 8, 22, 0.55);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.mobile-menu-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(75vw, 320px);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 2.5rem 2.5rem 2.5rem;
+  background: linear-gradient(
+    160deg,
+    rgba(145, 94, 255, 0.18) 0%,
+    rgba(21, 16, 48, 0.55) 40%,
+    rgba(5, 8, 22, 0.72) 100%
+  );
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: -20px 0 60px rgba(145, 94, 255, 0.15);
+}
+
+.mobile-menu-drawer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at top right,
+    rgba(145, 94, 255, 0.25),
+    transparent 60%
+  );
+}
+
+.mobile-menu-drawer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.mobile-menu-link a {
+  font-weight: 500;
+  font-size: 1.35rem;
+  color: #f3f3f3;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.mobile-menu-link.active a {
+  color: #9d7bff;
+}
+
+/* floating computer/network background for experience-tech-works sections */
+.network-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.network-links line {
+  stroke: rgba(145, 94, 255, 0.22);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.4s ease, stroke-width 0.4s ease, opacity 0.4s ease;
+}
+
+.network-links line.is-active {
+  stroke: rgba(145, 94, 255, 0.85);
+  stroke-width: 1.8;
+  opacity: 1;
+}
+
+.network-links line.dim {
+  opacity: 0.25;
+}
+
+.network-node {
+  transform-origin: center;
+  cursor: pointer;
+  animation: networkFloat 7s ease-in-out infinite;
+}
+
+.network-node-halo {
+  fill: rgba(21, 16, 48, 0.4);
+  opacity: 0.9;
+  transition: transform 0.4s ease;
+}
+
+.network-node-core {
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 1;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 0 6px rgba(145, 94, 255, 0.45));
+}
+
+.network-node-glow {
+  fill: var(--node-color, #915eff);
+  opacity: 0.12;
+  transition: opacity 0.4s ease;
+}
+
+@keyframes networkFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -14px);
+  }
+}
+
+.network-node:hover .network-node-core {
+  transform: scale(1.7);
+  filter: drop-shadow(0 0 12px var(--node-color, #915eff));
+}
+
+.network-node:hover .network-node-glow {
+  opacity: 0.35;
+}
+
+.network-node:hover .network-node-halo {
+  transform: scale(1.5);
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .network-bg {
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .network-node {
+    animation: none;
+    pointer-events: none;
+  }
+}
+
 /* canvas- styles */
 .canvas-loader {
   font-size: 10px;
