@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 
 import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from "./components";
-import NetworkBackground from "./components/NetworkBackground";
+import ParticleDrift from "./components/ParticleDrift";
 
 const App = () => {
   return (
@@ -13,14 +13,24 @@ const App = () => {
         </div>
         <About />
         <div className='relative'>
-          <NetworkBackground />
+          <div className='particle-drift-bg'>
+            <ParticleDrift
+              mode='dark'
+              speed={1}
+              density={2.5}
+              length={1.5}
+              opacity={0.9}
+              hue={-10}
+              saturation={0.9}
+            />
+          </div>
           <div className='relative z-10'>
             <Experience />
             <Tech />
             <Works />
+            <Feedbacks />
           </div>
         </div>
-        <Feedbacks />
         <div className='relative z-0'>
           <Contact />
           <StarsCanvas />

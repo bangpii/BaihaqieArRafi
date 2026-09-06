@@ -343,6 +343,24 @@
   pointer-events: none;
 }
 
+/* particle drift background wrapper (experience -> certificates) */
+.particle-drift-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle-drift-bg iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
 /* floating computer/network background for experience-tech-works sections */
 .network-bg {
   position: absolute;
