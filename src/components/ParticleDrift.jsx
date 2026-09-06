@@ -274,7 +274,7 @@ const PARTICLE_DRIFT_SOURCE = `<!doctype html>
                         let n2 = nodes[j];
                         let d = Math.hypot(n1.x - n2.x, n1.y - n2.y);
                         if(d < 120) {
-                            ctx.strokeStyle = \`rgba(156, 163, 175, \${0.15 * (1 - d/120)})\`;
+                            ctx.strokeStyle = \`rgba(120, 180, 255, \${0.35 * (1 - d/120)})\`;
                             ctx.beginPath();
                             ctx.moveTo(n1.x, n1.y);
                             ctx.lineTo(n2.x, n2.y);
@@ -293,18 +293,19 @@ const PARTICLE_DRIFT_SOURCE = `<!doctype html>
                     let dist = Math.hypot(mouse.x - n.x, mouse.y - n.y);
 
                     // Dynamic Character Swap
-                    if (dist < 180 || Math.random() > 0.98) n.char = chars[Math.floor(Math.random() * chars.length)];
+                    if (dist < 260 || Math.random() > 0.98) n.char = chars[Math.floor(Math.random() * chars.length)];
 
                     // Mouse Connection
-                    if (dist < 180) {
-                        ctx.strokeStyle = \`rgba(96, 165, 250, \${0.5 * (1 - dist/180)})\`;
+                    if (dist < 260) {
+                        ctx.strokeStyle = \`rgba(120, 200, 255, \${0.95 * (1 - dist/260)})\`;
+                        ctx.lineWidth = 1.3;
                         ctx.beginPath(); 
                         ctx.moveTo(n.x, n.y); 
                         ctx.lineTo(mouse.x, mouse.y); 
                         ctx.stroke();
                     }
 
-                    ctx.fillStyle = dist < 180 ? '#60A5FA' : 'rgba(156, 163, 175, 0.4)';
+                    ctx.fillStyle = dist < 260 ? '#9bd3ff' : 'rgba(156, 163, 175, 0.55)';
                     ctx.fillText(n.char, n.x, n.y);
                 });
 
@@ -378,7 +379,7 @@ const PARTICLE_DRIFT_DEFINITION = {
   targets: [{ selector: "#particle-canvas", role: "background" }],
   patch(source, { size, length, density, mode }) {
     const link = Math.round(120 * length);
-    const proximityAlpha = mode === "light" ? 0.22 : 0.15;
+    const proximityAlpha = mode === "light" ? 0.22 : 0.45;
     let next = source
       .replace(
         "Array.from({ length: 90 })",
@@ -401,7 +402,7 @@ const PARTICLE_DRIFT_DEFINITION = {
         "b.y -= b.speed * ((window.__SF_CONTROLS&&window.__SF_CONTROLS.speed)||1);",
       )
       .replace("if(d < 120) {", `if(d < ${link}) {`)
-      .replace("0.15 * (1 - d/120)", `${proximityAlpha} * (1 - d/${link})`)
+      .replace("0.35 * (1 - d/120)", `${proximityAlpha} * (1 - d/${link})`)
       .replace(
         "ctx.lineWidth = 1.5;",
         `ctx.lineWidth = ${Number((1.5 * size).toFixed(2))};`,
@@ -409,10 +410,12 @@ const PARTICLE_DRIFT_DEFINITION = {
     if (mode === "light") {
       next = next
         .replaceAll("rgba(96, 165, 250,", "rgba(37, 99, 235,")
+        .replaceAll("rgba(120, 200, 255,", "rgba(37, 99, 235,")
+        .replaceAll("rgba(120, 180, 255,", "rgba(36, 48, 68,")
         .replaceAll("rgba(156, 163, 175,", "rgba(36, 48, 68,")
         .replace(
-          "ctx.fillStyle = dist < 180 ? '#60A5FA' : 'rgba(156, 163, 175, 0.4)';",
-          "ctx.fillStyle = dist < 180 ? '#2563EB' : 'rgba(36, 48, 68, 0.55)';",
+          "ctx.fillStyle = dist < 260 ? '#9bd3ff' : 'rgba(156, 163, 175, 0.55)';",
+          "ctx.fillStyle = dist < 260 ? '#2563EB' : 'rgba(36, 48, 68, 0.55)';",
         );
     }
     return next;
@@ -562,7 +565,7 @@ export default function ParticleDrift({
   const safeSize = clamp(size, 0.05, 200);
   const safeGap = clamp(gap, 0, 64);
   const safeLength = clamp(length, 0.35, 2.5);
-  const safeDensity = clamp(density, 0.25, 2.5);
+  const safeDensity = clamp(density, 0.25, 6);
   const safeStrokeWidth = clamp(strokeWidth, 0.25, 8);
   const safeOpacity = clamp(opacity, 0.05, 1);
   const safeHue = clamp(hue, -180, 180);
